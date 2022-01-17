@@ -17,6 +17,7 @@
 require 'capybara/rspec'
 require 'simplecov'
 require 'simplecov-console'
+
 # require 'features/web_helper'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
@@ -26,7 +27,10 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
 ])
 SimpleCov.start
 
+ENV['RACK_ENV'] = 'test'
 
+require File.join(File.dirname(__FILE__), '..', 'app.rb')
+Capybara.app = Bookmarks
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
