@@ -6,6 +6,10 @@ First user story
 
 ## Database setup 
 
+
+
     CREATE DATABASE "bookmark_manager";
-    CREATE TABLE bookmarks(id SERIAL PRIMARY KEY, url VARCHAR(60));
+    \c bookmark_manager
+    run the code from 01_make_bookmarks_table.sql 
+    
 

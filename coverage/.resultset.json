@@ -25,11 +25,16 @@
       },
       "/Users/adamhindmarsh/Desktop/projects/bookmarks/lib/bookmarks.rb": {
         "lines": [
-          null,
           1,
           null,
           1,
+          null,
+          1,
+          null,
           2,
+          2,
+          8,
+          null,
           null,
           null,
           null
@@ -67,6 +72,6 @@
         ]
       }
     },
-    "timestamp": 1642516608
+    "timestamp": 1642519158
   }
 }
