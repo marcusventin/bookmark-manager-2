@@ -13,12 +13,13 @@
 # it.
 #
 
+ENV['ENVIRONMENT'] = 'test'
 
 require 'capybara/rspec'
 require 'simplecov'
 require 'simplecov-console'
 
-# require 'features/web_helper'
+require 'helper_methods'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::Console,
@@ -35,6 +36,11 @@ Capybara.app = Bookmarks
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
+  config.before(:each) do
+    truncate_db
+    add_test_entry
+  end
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
