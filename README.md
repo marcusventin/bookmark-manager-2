@@ -12,4 +12,7 @@ First user story
     \c bookmark_manager
     run the code from 01_make_bookmarks_table.sql 
     
+    CREATE DATABASE "bookmark_manager_test";
+    \c bookmark_manager_test
+    run the code from 01_make_bookmarks_table.sql 
 
