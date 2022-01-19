@@ -33,4 +33,14 @@ describe Bookmark do
       expect(bookmark.url).to eq 'fake_web_address'
     end
   end
+
+  describe '.delete' do
+    it 'removes a bookmark from the database' do
+      Bookmark.add(title: 'first_dummy', url: 'first_dummy_url')
+      Bookmark.add(title: 'fake_title', url: 'fake_web_address')
+      Bookmark.delete('fake_title')
+      bookmark = Bookmark.all
+      expect(bookmark.last.title).not_to eq 'fake_title'
+    end
+  end
 end
