@@ -91,8 +91,11 @@
           1,
           1,
           null,
-          null,
-          null,
+          null
+        ]
+      },
+      "/Users/marcusventin/Projects/week-6-databases/bookmark-manager-2/bookmarks/spec/Features/see_bookmarks_spec.rb": {
+        "lines": [
           1,
           1,
           1,
@@ -106,7 +109,8 @@
           1,
           null,
           1,
-          1,
+          4,
+          null,
           1,
           1,
           1,
@@ -126,6 +130,6 @@
         ]
       }
     },
-    "timestamp": 1642525913
+    "timestamp": 1642599971
   }
 }

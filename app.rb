@@ -8,7 +8,7 @@ class Bookmarks < Sinatra::Base
   end 
 
   get '/bookmarks' do
-   @bookmarks = Bookmark.new.all_bookmarks
+   @bookmarks = Bookmark.all
    erb :'bookmarks/index'
   end
 
@@ -17,7 +17,7 @@ class Bookmarks < Sinatra::Base
   end
 
   post '/save-bookmark' do
-    Bookmark.new.add_bookmark(params[:url])
+    Bookmark.add(params[:url])
     redirect '/bookmarks'
   end
 
