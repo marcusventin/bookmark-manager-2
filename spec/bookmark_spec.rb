@@ -1,21 +1,36 @@
-require 'bookmarks'
+require 'bookmark'
+require 'database_helpers'
 
 describe Bookmark do
   subject { Bookmark }
 
   describe '.all' do
-    it 'returns all bookmarks' do
-      expect(subject.all).to include("https://www.google.com")
+    it 'returns a list of all bookmarks' do
+      PG.connect(dbname: 'bookmark_manager_test')
+
+      bookmark = Bookmark.add(title: 'Gobble', url: 'https://www.google.com/')
+      Bookmark.add(title: 'Rubby Ducks', url: 'https://ruby-doc.org/')
+      Bookmark.add(title: 'Dockers', url: 'https://makers.tech/')
+
+      bookmarks = Bookmark.all
+
+      expect(bookmarks.length).to eq 3
+      expect(bookmarks.first).to be_a Bookmark
+      expect(bookmarks.first.id).to eq bookmark.id
+      expect(bookmarks.first.title).to eq 'Gobble'
+      expect(bookmarks.first.url).to eq 'https://www.google.com/'
     end
   end
 
-  describe ".add" do
+  describe '.add' do
+    it 'adds a bookmark to the database' do
+      bookmark = Bookmark.add(title: 'fake_title', url: 'fake_web_address')
+      persisted_data = persisted_data(id: bookmark.id)
 
-    it { is_expected.to respond_to(:add).with(1).argument }
-    
-    it "adds a bookmark to the database" do
-      subject.add("fake_web_address")
-      expect(subject.all).to include("fake_web_address")
+      expect(bookmark).to be_a Bookmark
+      expect(bookmark.id).to eq persisted_data.first['id']
+      expect(bookmark.title).to eq 'fake_title'
+      expect(bookmark.url).to eq 'fake_web_address'
     end
   end
 end

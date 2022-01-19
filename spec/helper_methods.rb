@@ -1,11 +1,9 @@
-
 def truncate_db
   con = PG.connect(dbname: 'bookmark_manager_test')
-  result = con.exec 'TRUNCATE TABLE bookmarks;'
+  con.exec 'TRUNCATE TABLE bookmarks;'
 end
 
 def add_test_entry
   con = PG.connect(dbname: 'bookmark_manager_test')
-  result = con.exec "INSERT INTO bookmarks (url) VALUES ('https://www.google.com');"
+  con.exec "INSERT INTO bookmarks (title, url) VALUES ('Codewars', 'https://www.codewars.com/');"
 end
-

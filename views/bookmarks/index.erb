@@ -1,6 +1,11 @@
-Here are your bookmarks
-<%= @bookmarks.join(", ") %> 
-
+Here are your bookmarks:
+<% @bookmarks.each do |bookmark| %>
+  <li>
+    <a href="<%= bookmark.url %>" >
+      <%=bookmark.title%>
+    </a>
+  </li>
+<% end %>
 <form action='/add'>
   <input type='submit' value='Add Bookmark'>
 </form>

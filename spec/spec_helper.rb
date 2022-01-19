@@ -31,14 +31,13 @@ SimpleCov.start
 ENV['RACK_ENV'] = 'test'
 
 require File.join(File.dirname(__FILE__), '..', 'app.rb')
-require_relative '../lib/bookmarks'
+require_relative '../lib/bookmark'
 Capybara.app = Bookmarks
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   config.before(:each) do
     truncate_db
-    add_test_entry
   end
 
   # rspec-expectations config goes here. You can use an alternate

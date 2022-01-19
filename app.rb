@@ -1,15 +1,14 @@
 require 'sinatra/base'
-require_relative 'lib/bookmarks'
+require_relative './lib/bookmark'
 
 class Bookmarks < Sinatra::Base
-  
-  get '/' do 
+  get '/' do
     redirect '/bookmarks'
-  end 
+  end
 
   get '/bookmarks' do
-   @bookmarks = Bookmark.all
-   erb :'bookmarks/index'
+    @bookmarks = Bookmark.all
+    erb :'bookmarks/index'
   end
 
   get '/add' do
@@ -17,11 +16,9 @@ class Bookmarks < Sinatra::Base
   end
 
   post '/save-bookmark' do
-    Bookmark.add(params[:url])
+    Bookmark.add(title: params[:title], url: params[:url])
     redirect '/bookmarks'
   end
 
-  run! if app_file == $0
-
+  run! if app_file == $PROGRAM_NAME
 end
-
